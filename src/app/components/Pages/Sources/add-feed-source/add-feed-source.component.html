@@ -1,0 +1,42 @@
+<div class="container py-5 fade-in">
+  <div class="card shadow-lg border-0 rounded-4 p-4 bg-white mx-auto" style="max-width: 600px;">
+    <h2 class="text-center text-primary fw-bold mb-4">➕ Add New Feed Source</h2>
+
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <!-- Category -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Category</label>
+        <select formControlName="category" class="form-select form-select-lg">
+          <option *ngFor="let cat of categories" [value]="cat.value">
+            {{ cat.label }}
+          </option>
+        </select>
+        <div *ngIf="form.get('category')?.touched && form.get('category')?.invalid" class="text-danger small mt-1">
+          Category is required.
+        </div>
+      </div>
+
+      <!-- URL -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">RSS Feed URL</label>
+        <input
+          type="text"
+          formControlName="url"
+          class="form-control form-control-lg"
+          placeholder="Enter RSS feed URL"
+        />
+        <div *ngIf="form.get('url')?.touched && form.get('url')?.invalid" class="text-danger small mt-1">
+          Please enter a valid RSS URL.
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="d-flex justify-content-between mt-4">
+        <button class="btn btn-success px-4 py-2 fw-semibold" type="submit" [disabled]="loading">
+          {{ loading ? 'Saving...' : 'Save Source' }}
+        </button>
+        <a routerLink="/feed-sources" class="btn btn-secondary px-4 py-2">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>

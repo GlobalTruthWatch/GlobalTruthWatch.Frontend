@@ -1,0 +1,27 @@
+<div class="writers-container" *ngIf="!loading && !error">
+  <h2>Our Writers</h2>
+
+  <div class="writers-grid">
+    <div class="writer-card" *ngFor="let writer of writers">
+      <h3>ID: {{ writer.id }}</h3>
+      <h6>{{ writer.name }}</h6>
+      <p>{{ writer.email }}</p>
+
+      <button
+        class="delete-btn"
+        (click)="deleteWriter(writer.id)"
+        [disabled]="deletingId === writer.id"
+      >
+        {{ deletingId === writer.id ? 'Deleting...' : 'Delete' }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="loading" *ngIf="loading">
+  <p>Loading writers...</p>
+</div>
+
+<div class="error" *ngIf="error">
+  <p>{{ error }}</p>
+</div>

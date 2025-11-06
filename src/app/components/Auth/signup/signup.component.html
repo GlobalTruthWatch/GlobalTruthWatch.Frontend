@@ -1,0 +1,57 @@
+<div class="login-container">
+  <div class="login-card fade-in">
+    <h2 class="login-title">Create Account </h2>
+    <p class="login-subtitle">Join us and explore the future</p>
+
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <!-- Full Name -->
+      <div class="input-group">
+        <input type="text" placeholder="Full Name" formControlName="name" />
+        <div class="error" *ngIf="name?.touched && name?.invalid">
+          <small *ngIf="name?.errors?.['required']">Name is required.</small>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="input-group">
+        <input type="email" placeholder="Email" formControlName="email" />
+        <div class="error" *ngIf="email?.touched && email?.invalid">
+          <small *ngIf="email?.errors?.['required']">Email is required.</small>
+          <small *ngIf="email?.errors?.['email']">Enter a valid email.</small>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="input-group">
+        <input type="password" placeholder="Password" formControlName="password" />
+        <div class="error" *ngIf="password?.touched && password?.invalid">
+          <small *ngIf="password?.errors?.['required']">Password is required.</small>
+          <small *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters.</small>
+        </div>
+      </div>
+
+      <!-- Remember Me
+      <div class="remember-group">
+        <input type="checkbox" id="remember" formControlName="rememberMe" />
+        <label for="remember">Remember me</label>
+      </div> -->
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn-login" [disabled]="loading">
+        <span *ngIf="!loading">Sign Up</span>
+        <span *ngIf="loading">Signing up...</span>
+      </button>
+
+      <!-- Server Error -->
+      <div class="server-error" *ngIf="serverError">
+        {{ serverError }}
+      </div>
+    </form>
+
+    <!-- Footer Buttons -->
+    <div class="login-footer-buttons">
+     <a class="footer-btn"  routerLink="/Login">Already have an account? Login</a>
+
+    </div>
+  </div>
+</div>

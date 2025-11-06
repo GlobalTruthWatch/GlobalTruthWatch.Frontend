@@ -1,0 +1,34 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4 text-primary fw-bold">All Requests</h2>
+
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-2">Loading writers...</p>
+  </div>
+
+  <div *ngIf="!loading && writers.length === 0" class="text-center text-muted">
+    <p>No writers found.</p>
+  </div>
+
+  <div *ngIf="message" class="alert alert-info text-center my-3">{{ message }}</div>
+
+  <div class="row g-3 justify-content-center">
+    <div *ngFor="let writer of writers" class="col-sm-12 col-md-6 col-lg-4">
+      <div class="card shadow-sm border-0 p-3 rounded-4 h-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title text-primary mb-2">{{ writer.user.name }}</h5>
+          <p class="mb-1"><strong>ID:</strong> {{ writer.id }}</p>
+          <p class="mb-1">
+            <strong>Writer Type:</strong>
+            {{ writer.type === 0 ? 'Blogger' : writer.type === 1 ? 'Journalist' : 'Pending' }}
+          </p>
+          <p class="mb-2"><strong>Application Date:</strong> {{ writer.applicationDate | date:'medium' }}</p>
+          <p *ngIf="writer.approvedDate" class="mb-2">
+            <strong>Approved Date:</strong> {{ writer.approvedDate | date:'medium' }}
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

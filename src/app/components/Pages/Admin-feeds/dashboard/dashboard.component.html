@@ -1,0 +1,94 @@
+<div class="dashboard-container">
+  <div *ngIf="isMobileMenuOpen" class="mobile-overlay" (click)="toggleMobileMenu()"></div>
+
+  <div class="main-content" [class.expanded-margin]="isSidebarExpanded" [class.collapsed-margin]="!isSidebarExpanded">
+    <header class="top-header">
+      <button class="menu-toggle-btn mobile-only" (click)="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <button class="menu-toggle-btn desktop-only" (click)="toggleSidebar()">
+        <i [class]="isSidebarExpanded ? 'fas fa-angle-left' : 'fas fa-angle-right'"></i>
+      </button>
+
+      <h1 class="header-title">Global Analytics</h1>
+
+      <div class="header-tools">
+        <i class="fas fa-bell header-icon" title="Notifications"></i>
+        <div class="user-profile">
+          <span>Admin User</span>
+          <i class="fas fa-user-circle user-avatar"></i>
+        </div>
+      </div>
+    </header>
+
+    <div class="content-body">
+      <h2 class="section-title">Overview</h2>
+
+      <div class="stats-grid">
+        <div class="stat-card animate">
+          <i class="fas fa-newspaper card-icon primary-color"></i>
+          <div class="details">
+            <p class="stat-label">Total Feeds</p>
+            <h3 class="stat-value">{{ totalFeeds }}</h3>
+          </div>
+        </div>
+
+        <div class="stat-card animate delay-1">
+          <i class="fas fa-rss card-icon accent-color"></i>
+          <div class="details">
+            <p class="stat-label">Sources</p>
+            <h3 class="stat-value">{{ totalSources }}</h3>
+          </div>
+        </div>
+
+        <div class="stat-card animate delay-2">
+          <i class="fas fa-list card-icon secondary-color"></i>
+          <div class="details">
+            <p class="stat-label">Categories</p>
+            <h3 class="stat-value">{{ (activeCategoriesCount | keyvalue).length }}</h3>
+          </div>
+        </div>
+
+        <div class="stat-card animate delay-3">
+          <i class="fas fa-clock card-icon info-color"></i>
+          <div class="details">
+            <p class="stat-label">Recent (7d)</p>
+            <!-- ✅ استخدم المتغير الجديد -->
+            <h3 class="stat-value">{{ recentFeedsCount }}</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="charts-row">
+        <div class="chart-card">
+          <h3 class="chart-title">Posts — Last 7 Days</h3>
+          <div class="chart-wrapper">
+            <canvas baseChart [data]="lineChartData" [options]="lineChartOptions" type="line"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-card small">
+          <h3 class="chart-title">Category Distribution</h3>
+          <div class="chart-wrapper small">
+            <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions" type="doughnut"></canvas>
+          </div>
+
+          <div class="top-sources mt-3">
+            <h4 class="small-title">Top Sources</h4>
+            <ul>
+              <li *ngFor="let s of topSources">{{ s.name }} <span class="muted">({{ s.count }})</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <router-outlet></router-outlet>
+    </div>
+
+    <footer class="footer">
+      <span>&copy; {{ 2024 }} Global Truth Watch</span>
+      <span class="desktop-only">| Designed with Angular</span>
+    </footer>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+.subscribers-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+h2 {
+  color: #002b66;
+  margin-bottom: 1.5rem;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.styled-table th, .styled-table td {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+}
+
+.styled-table th {
+  background-color: #002b66;
+  color: #fff;
+}
+
+.loading, .no-data {
+  color: #666;
+  margin-top: 1rem;
+}

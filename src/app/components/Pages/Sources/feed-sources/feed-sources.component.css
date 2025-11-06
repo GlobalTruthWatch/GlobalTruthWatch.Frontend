@@ -1,0 +1,147 @@
+.sources-wrapper {
+  padding: 60px 20px;
+  background: linear-gradient(180deg, #f4f8ff 0%, #ffffff 100%);
+  min-height: 100vh;
+}
+
+.page-title {
+  text-align: center;
+  color: #0d6efd;
+  font-weight: 700;
+  margin-bottom: 50px;
+  font-size: 2.2rem;
+}
+
+.sources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 25px;
+}
+
+.source-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.source-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(13, 110, 253, 0.15);
+}
+
+.card-header h3 {
+  font-size: 1.4rem;
+  color: #0d6efd;
+  margin-bottom: 10px;
+}
+
+.card-footer {
+  font-size: 0.9rem;
+  color: #6c757d;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-edit {
+  background-color: #0d6efd;
+  color: #fff;
+}
+.btn-edit:hover {
+  background-color: #0056b3;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: #fff;
+}
+.btn-delete:hover {
+  background-color: #b02a37;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fade 0.4s ease;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 14px;
+  padding: 25px;
+  width: 350px;
+  max-width: 95%;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+}
+
+.modal h2 {
+  margin-bottom: 15px;
+  color: #0d6efd;
+}
+
+.modal input {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-primary {
+  background-color: #198754;
+  color: white;
+}
+.btn-primary:hover {
+  background-color: #146c43;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Animations */
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade {
+  animation: fade 0.7s ease forwards;
+}
+.animate-slide {
+  animation: fade 0.8s ease forwards;
+}

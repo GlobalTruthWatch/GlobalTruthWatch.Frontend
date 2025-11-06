@@ -1,0 +1,21 @@
+
+
+<div class="container">
+  <h2>Publishes</h2>
+
+  <div *ngIf="loading" class="loading">Loading...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div class="card-grid" *ngIf="!loading && publishes.length">
+    <div class="card" *ngFor="let publish of publishes">
+      <img [src]="publish.imageUrl ? api + '/assets/images/' + publish.imageUrl : 'assets/default.png'" alt="{{publish.title}}">
+      <div class="card-body">
+        <h3>{{ publish.title }}</h3>
+        <p>{{ publish.summary }}</p>
+        <p><strong>Category:</strong> {{ publish.category }}</p>
+        <p><strong>Language:</strong> {{ publish.language }}</p>
+        <p><strong>Published at:</strong> {{ publish.publishedAt | date:'short' }}</p>
+      </div>
+    </div>
+  </div>
+</div>

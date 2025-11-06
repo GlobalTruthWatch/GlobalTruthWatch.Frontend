@@ -1,0 +1,58 @@
+<div class="user-page container-fluid py-4">
+  <div class="container">
+    <h2 class="text-center mb-4 fw-bold text-primary">📋 Users List</h2>
+
+    <div *ngIf="isLoading" class="text-center py-3">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <div *ngIf="!isLoading && errorMessage" class="alert alert-danger text-center">
+      {{ errorMessage }}
+    </div>
+
+    <!-- 💻 Table View (Desktop / Tablet) -->
+    <div class="table-responsive shadow-sm rounded-3">
+      <table *ngIf="!isLoading && users.length > 0" class="table table-hover align-middle mb-0">
+        <thead class="table-primary text-center">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <tr *ngFor="let user of users" class="user-row">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td class="text-break">{{ user.email }}</td>
+            <td>
+              <button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)">
+                🗑 Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 📱 Card View (Mobile) -->
+    <div *ngFor="let user of users" class="mobile-card">
+      <div class="info">
+        <strong>ID:</strong> {{ user.id }} <br>
+        <strong>Name:</strong> {{ user.name }} <br>
+        <strong>Email:</strong>
+        <div class="email">{{ user.email }}</div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)">🗑 Delete</button>
+      </div>
+    </div>
+
+    <div *ngIf="!isLoading && users.length === 0" class="text-center text-muted mt-3">
+      No users to display.
+    </div>
+  </div>
+</div>

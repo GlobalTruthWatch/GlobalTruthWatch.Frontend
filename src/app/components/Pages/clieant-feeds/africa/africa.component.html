@@ -1,0 +1,55 @@
+<!-- src/app/components/Pages/clieant-feeds/africa/africa.component.html -->
+
+<div class="feeds-container" *ngIf="feeds.length > 0; else loadingTpl">
+  <h2 class="section-title">Africa News</h2>
+
+  <div class="feed-cards">
+    <ng-container *ngFor="let feed of paginatedFeeds">
+      <div class="feed-card" (click)="viewDetails(feed.Id || feed.id)">
+        <div class="animated-bg"></div>
+
+        <img
+        [src]="feed.writerId ? (apiUrl + '/assets/images/' + feed.imageUrl) : feed.imageUrl || 'assets/placeholder.png'"
+        alt="{{ feed.Title || feed.title }}"
+          class="feed-img"
+        />
+
+        <div class="feed-content">
+          <div class="source-info">
+            <span class="Publishercolor">Publisher: </span>{{ feed.SourceName || feed.sourceName || 'Unknown Source' }}
+          </div>
+          <h3>{{ feed.Title || feed.title || 'No Title' }}</h3>
+          <p class="time">
+            🕓
+            {{
+              feed.PublishedAt || feed.publishedAt || feed.pubDate
+                ? (feed.PublishedAt || feed.publishedAt || feed.pubDate | date : 'medium')
+                : 'No Date'
+            }}
+          </p>
+          <p class="description">
+            {{ feed.Summary || feed.summary || 'No Summary available.' }}
+          </p>
+          <button class="details-btn">📖 View Details</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="pagination">
+    <button
+      *ngFor="let page of totalPages"
+      (click)="changePage(page)"
+      [class.active]="page === currentPage"
+    >
+      {{ page }}
+    </button>
+  </div>
+</div>
+
+<ng-template #loadingTpl>
+  <div class="loading">
+    <div class="spinner"></div>
+    <p>Loading feeds...</p>
+  </div>
+</ng-template>

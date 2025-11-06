@@ -1,0 +1,32 @@
+<div class="feed-details-wrapper" *ngIf="!loading; else loadingTpl">
+  <div class="feed-card animate-fade-in">
+    <img *ngIf="feed?.ImageUrl" [src]="feed.ImageUrl" alt="Feed image" class="feed-img" />
+
+    <div class="feed-content-wrapper">
+      <h1 class="feed-title">{{ feed?.Title }}</h1>
+      <p class="feed-category">{{ feed?.Category }}</p>
+
+      <p class="feed-summary">{{ feed?.Summary }}</p>
+
+      <div class="feed-body" *ngIf="feed?.Content">
+        <h5>📰 Full Content:</h5>
+        <pre>{{ feed?.Content }}</pre>
+      </div>
+
+      <div class="feed-footer">
+        <a [href]="feed?.Link" target="_blank" class="btn-read">Read Full Article</a>
+        <span class="feed-date">
+          <i class="far fa-calendar-alt me-1"></i>
+          {{ feed?.PublishedAt | date:'medium' }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadingTpl>
+  <div class="loading-container">
+    <div class="spinner"></div>
+    <p>Loading article details...</p>
+  </div>
+</ng-template>

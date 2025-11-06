@@ -1,0 +1,100 @@
+/* src/app/components/Pages/dashboard/dashboard.component.css */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+* { box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+
+.dashboard-container { display: flex; background-color: #f8f9fa; min-height: 100vh; }
+
+.main-content { padding: 20px; width: 100%; transition: margin-left 0.3s ease; overflow-x: hidden; }
+.expanded-margin { margin-left: 230px; } .collapsed-margin { margin-left: 70px; }
+
+.top-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:15px 30px; background:#fff; box-shadow:0 2px 4px rgba(0,0,0,0.06);
+  margin-bottom:20px; border-radius:8px;
+}
+.header-title { font-size:1.5rem; color:#34495e; font-weight:700; }
+.header-tools { display:flex; align-items:center; }
+.header-icon { font-size:1.2rem; color:#2c3e50; margin-right:20px; cursor:pointer; transition:color .2s; }
+.header-icon:hover { color:#4c51bf; }
+.user-profile { display:flex; align-items:center; }
+.user-profile span { margin-right:10px; color:#34495e; }
+
+.menu-toggle-btn {
+  background:#4c51bf; color:#fff; border:none; border-radius:50%; width:40px; height:40px; display:flex;
+  align-items:center; justify-content:center; cursor:pointer; margin-right:15px;
+}
+.menu-toggle-btn:hover { background:#3b3fb5; }
+.desktop-only { display:block; } .mobile-only { display:none; }
+
+/* Stats Grid */
+.stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; margin-bottom:30px; }
+.stat-card { background:#fff; border-radius:12px; padding:20px; display:flex; align-items:center; box-shadow:0 4px 12px rgba(0,0,0,0.06); transition:transform .3s, box-shadow .3s; }
+.stat-card:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.10); }
+.card-icon { font-size:2.5rem; margin-left:15px; }
+.details { text-align:right; }
+.stat-label { font-size:0.9rem; color:#7f8c8d; margin:0; }
+.stat-value { font-size:1.8rem; color:#34495e; margin:5px 0 0; font-weight:700; }
+
+/* icon colors */
+.primary-color { color:#4c51bf; } .accent-color { color:#ff9800; } .secondary-color { color:#2c3e50; } .info-color { color:#3498db; }
+
+/* Charts row */
+.charts-row { display:flex; gap:20px; margin-bottom:25px; flex-wrap:wrap; }
+.chart-card { flex:1 1 65%; background:#fff; padding:20px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.06); }
+.chart-card.small { flex:1 1 30%; display:flex; flex-direction:column; justify-content:flex-start; }
+.chart-title { font-weight:600; margin-bottom:12px; color:#34495e; border-bottom:1px solid #eee; padding-bottom:8px; }
+.chart-wrapper { height: 380px; width:100%; }
+.chart-wrapper.small { height:210px; }
+
+.top-sources { margin-top:10px; }
+.top-sources ul { margin:0; padding-left: 1rem; color:#444; }
+.top-sources li { margin-bottom:6px; font-size:0.95rem; }
+.muted { color:#7f8c8d; margin-left:6px; }
+
+/* Footer */
+.footer { text-align:center; padding:15px 0; margin-top:30px; color:#95a5a6; font-size:0.85rem; }
+
+/* Animations */
+.animate { animation-duration:0.7s; animation-fill-mode:both; animation-name:fadeInUp; }
+.delay-1 { animation-delay:.05s; } .delay-2 { animation-delay:.1s; } .delay-3 { animation-delay:.15s; }
+@keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+/* responsive */
+@media (max-width: 1024px) {
+  .chart-wrapper { height: 300px; }
+  .chart-wrapper.small { height:200px; }
+}
+@media (max-width: 768px) {
+  .desktop-only { display:none !important; }
+  .mobile-only { display:flex !important; }
+  .expanded-margin, .collapsed-margin { margin-left: 0; }
+  .charts-row { flex-direction:column; }
+  .chart-card, .chart-card.small { flex: 1 1 100%; }
+  .chart-wrapper { height: 240px; }
+}
+
+/* mobile overlay */
+.mobile-overlay {
+  position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.45); z-index:999;
+}
+.dashboard-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.content-body {
+  padding: 20px; /* خليه بسيط علشان المحتوى ما يلزقش في الأطراف */
+}
+
+.expanded-margin, .collapsed-margin {
+  margin: 0 !important;
+  padding: 0 !important;
+}

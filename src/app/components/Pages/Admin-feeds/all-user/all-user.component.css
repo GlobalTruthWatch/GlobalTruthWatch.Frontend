@@ -1,0 +1,116 @@
+/* ================================ */
+/* General Page Layout */
+.user-page {
+  background: #f5f7fa;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-bottom: 60px;
+}
+
+/* Title */
+h2 {
+  color: #002b66;
+}
+
+/* ================================ */
+/* 💻 Desktop Table Design */
+.table {
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.table thead th {
+  background-color: #002b66 !important;
+  color: white;
+  font-weight: 600;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #eaf2ff;
+  transition: background-color 0.3s ease;
+}
+
+.user-row td {
+  vertical-align: middle;
+}
+
+/* Delete Button */
+.btn-danger {
+  transition: all 0.3s ease;
+  border-radius: 6px;
+}
+
+.btn-danger:hover {
+  transform: scale(1.05);
+}
+
+/* ================================ */
+/* 📱 Responsive Mobile Design */
+@media (max-width: 768px) {
+  /* Hide Table on Mobile */
+  .table {
+    display: none;
+  }
+
+  /* Card Design */
+  .mobile-card {
+    background: #ffffff;
+    border: 1px solid #e3e6ea;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .mobile-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-card .info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .mobile-card strong {
+    color: #002b66;
+  }
+
+  .mobile-card .email {
+    word-wrap: break-word;
+    color: #444;
+    font-size: 0.9rem;
+  }
+
+  .mobile-card .actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+
+  .mobile-card button {
+    font-size: 0.85rem;
+    padding: 4px 10px;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* ================================ */
+/* 🖥️ Large Screen Optimization */
+@media (min-width: 769px) {
+  .mobile-card {
+    display: none;
+  }
+
+  .container {
+    max-width: 900px;
+  }
+}

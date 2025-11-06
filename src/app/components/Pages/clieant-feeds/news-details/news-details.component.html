@@ -1,0 +1,58 @@
+<div class="details-container" *ngIf="feed; else noDataTpl">
+
+  <button class="back-btn" (click)="goBack()">
+    <span class="arrow">←</span> Back to Feed
+  </button>
+
+  <h1 class="details-title">{{ feed.Title }}</h1>
+
+  <div class="details-meta">
+    <span class="meta-item" *ngIf="feed.SourceName">
+      <i class="icon">📰</i> {{ feed.SourceName }}
+    </span>
+    <span class="meta-item" *ngIf="feed.WriterName">
+      <i class="icon">👤</i> By: {{ feed.WriterName }}
+    </span>
+    <span class="meta-item" *ngIf="formattedDate">
+      <i class="icon">🕓</i> {{ formattedDate }}
+    </span>
+    <span class="meta-item" *ngIf="feed.Category">
+      <i class="icon">#</i> Category: {{ getCategoryName(feed.Category) }}
+    </span>
+  </div>
+
+  <img *ngIf="feed.ImageUrl" [src]="feed.WriterId ? (apiUrl + '/assets/images/' + feed.ImageUrl) : feed.ImageUrl || 'assets/placeholder.png'" [alt]="feed.Title" class="details-img" />
+  <p class="details-summary" *ngIf="feed.Summary">
+    <strong>Summary:</strong> <em>{{ feed.Summary }}</em>
+  </p>
+
+  <div class="details-content">
+    <p *ngIf="primaryContent">{{ primaryContent }}</p>
+    <p *ngIf="!primaryContent && !feed.Summary">
+      <span class="alert-text">No main content available. Please refer to the original source.</span>
+    </p>
+  </div>
+
+  <div class="details-extra">
+    <!-- <p *ngIf="originalLink">
+      <strong><i class="icon">🔗</i> Original Link:</strong>
+      <a [href]="originalLink" target="_blank" class="link-btn">View Full Article</a>
+    </p> -->
+    <p *ngIf="feed.Credit">
+      <strong><i class="icon">©</i> Credit:</strong> {{ feed.Credit }}
+    </p>
+    <p *ngIf="feed.Language">
+      <strong><i class="icon">🌐</i> Language:</strong> {{ feed.Language | uppercase }}
+    </p>
+  </div>
+
+</div>
+
+<ng-template #noDataTpl>
+  <div class="no-data">
+    <p>No details available for this news item.</p>
+    <button class="back-btn" (click)="goBack()">
+      <span class="arrow">←</span> Back to Feed
+    </button>
+  </div>
+</ng-template>

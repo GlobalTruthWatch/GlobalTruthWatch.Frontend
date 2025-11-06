@@ -1,0 +1,52 @@
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Brand Info -->
+    <div class="footer-col brand-info">
+      <div class="logo-link">
+        <img src="assets/image1.png" alt="GlobalTruthWatch Logo" class="logo-img" />
+        <h3>GlobalTruthWatch</h3>
+      </div>
+      <p>
+        An independent platform dedicated to monitoring global truth and delivering
+        accurate, balanced analysis from reliable worldwide sources.
+      </p>
+
+      <!-- Subscribe Form -->
+      <div class="subscribe-box">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          [(ngModel)]="email"
+          class="subscribe-input"
+        />
+        <button class="subscribe-btn" (click)="subscribe()" [disabled]="loading">
+          {{ loading ? 'Subscribing...' : 'Subscribe' }}
+        </button>
+        <p class="subscribe-msg">{{ message }}</p>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="footer-col about-info">
+      <h3>About Us</h3>
+      <p>
+        Stay informed with verified news, insights, and perspectives.
+        Our mission is to provide clear and transparent global updates.
+      </p>
+    </div>
+
+    <!-- Mission Section -->
+    <div class="footer-col mission-info">
+      <h3>Our Mission</h3>
+      <p>
+        Empowering truth through unbiased journalism and connecting global voices
+        for a better understanding of world events.
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <p>&copy; {{ currentYear }} GlobalTruthWatch. All Rights Reserved.</p>
+  </div>
+</footer>

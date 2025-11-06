@@ -1,0 +1,44 @@
+<div class="publish-create-form">
+  <h2>Create Publish</h2>
+
+
+  <form (ngSubmit)="submitForm()">
+    <div>
+      <label>Title</label>
+      <input type="text" [(ngModel)]="title" name="title" required />
+    </div>
+
+    <div>
+      <label>Summary</label>
+      <textarea [(ngModel)]="summary" name="summary" required></textarea>
+    </div>
+
+    <div>
+      <label>Content</label>
+      <textarea [(ngModel)]="content" name="content" required></textarea>
+    </div>
+
+    <div>
+      <label>Category</label>
+      <select [(ngModel)]="category" name="category" required>
+        <option value="" disabled>Select category</option>
+        <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Language</label>
+      <input type="text" [(ngModel)]="language" name="language" />
+    </div>
+
+    <div>
+      <label>Image</label>
+      <input type="file" (change)="onFileChange($event)" />
+    </div>
+
+    <button type="submit" [disabled]="loading">Create Publish</button>
+  </form>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+
+</div>

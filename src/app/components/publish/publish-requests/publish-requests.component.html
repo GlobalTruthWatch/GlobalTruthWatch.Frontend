@@ -1,0 +1,35 @@
+
+ <a class="btn btn-success m-4" routerLink="/Createpost">Create post</a>
+ <a class="btn btn-success m-4" routerLink="/admin/AllPosts">All Posts</a>
+
+
+
+<div class="publish-requests-container">
+  <h2>Pending Publish Requests</h2>
+
+  <div *ngIf="loading" class="loading">Loading requests...</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <div *ngIf="!loading && requests.length === 0" class="no-requests">
+    No pending requests.
+  </div>
+
+  <div *ngFor="let req of requests" class="request-card">
+    <div class="request-header">
+      <h3>{{ req.publishContent.title }}</h3>
+      <span>by: {{ req.writer.name }}</span>
+    </div>
+    <p><strong>Summary:</strong> {{ req.publishContent.summary }}</p>
+    <p><strong>Content:</strong> {{ req.publishContent.content }}</p>
+<img 
+  *ngIf="req.publishContent.imageUrl" 
+  [src]="api + '/assets/images/' + req.publishContent.imageUrl" 
+  alt="image" 
+/>
+
+    <div class="request-actions">
+      <button class="accept" (click)="respond(req.id, true)">Accept</button>
+      <button class="reject" (click)="respond(req.id, false)">Reject</button>
+    </div>
+  </div>
+</div>

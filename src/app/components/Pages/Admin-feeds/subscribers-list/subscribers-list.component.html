@@ -1,0 +1,30 @@
+<div class="subscribers-container">
+  <h2>Subscribers List</h2>
+
+  <div *ngIf="loading" class="loading">Loading...</div>
+
+  <div *ngIf="!loading && subscribers.length === 0" class="no-data">
+    No subscribers found.
+  </div>
+
+  <div class="table-wrapper" *ngIf="subscribers.length > 0">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Active</th>
+          <th>Subscription Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of subscribers">
+          <td>{{ s.id }}</td>
+          <td>{{ s.emailAddress }}</td>
+          <td>{{ s.isActive ? '✅' : '❌' }}</td>
+          <td>{{ s.subscriptionDate | date: 'short' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

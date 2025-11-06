@@ -1,0 +1,148 @@
+.feeds-container {
+  padding: 80px 20px;
+  background: linear-gradient(to bottom, #001f3f, #002b66);
+  min-height: 100vh;
+  animation: fadeIn 0.8s ease-in-out;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #ffd700;
+  margin-bottom: 40px;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+}
+.Publishercolor{
+  color: #fff;
+}
+.feed-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+.feed-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.feed-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
+}
+
+/* ✅ الخلفية المتحركة تحت كل شيء */
+.animated-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+  animation: pulse 6s infinite alternate;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.3; transform: scale(1); }
+  100% { opacity: 0.7; transform: scale(1.2); }
+}
+
+/* ✅ تأكيد إن الصورة فوق الخلفية */
+.feed-img {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  z-index: 1;
+  display: block;
+}
+
+/* ✅ المحتوى فوق الكل */
+.feed-content {
+  padding: 25px;
+  position: relative;
+  z-index: 2;
+}
+
+.source-info {
+  color: #ffd700;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.feed-content h3 {
+  color: #fff;
+  font-size: 1.25rem;
+  margin: 10px 0;
+}
+
+.time {
+  color: #a7c7e7;
+  font-size: 0.9rem;
+}
+
+.description {
+  color: #cce7ff;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.details-btn {
+  margin-top: 15px;
+  padding: 8px 18px;
+  background: #ffd700;
+  color: #002b66;
+  font-weight: bold;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.details-btn:hover {
+  background: #fff;
+  color: #002b66;
+}
+
+.pagination {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pagination button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ffd700;
+  background: transparent;
+  color: #ffd700;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination button:hover,
+.pagination button.active {
+  background: #ffd700;
+  color: #002b66;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 992px) {
+  .feed-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .feed-cards { grid-template-columns: 1fr; }
+}

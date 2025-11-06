@@ -1,0 +1,50 @@
+<div class="home-container" *ngIf="!loading; else loadingTpl">
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="text-side">
+        <h1 class="hero-title">Global Truth Watch</h1>
+        <p class="hero-subtitle">
+          Your window to verified, real-time global news.
+        </p>
+        <button class="explore-btn" (click)="scrollToNews()">Explore Latest News ↓</button>
+      </div>
+
+      <div class="image-side">
+        <img src="assets/image1.png" alt="Global Truth Watch Logo" class="logo" />
+      </div>
+    </div>
+
+    <div class="floating-particles"></div>
+    <div class="gradient-waves"></div>
+  </section>
+
+  <!-- Feeds Section -->
+  <section class="feed-section" id="news-section" *ngFor="let category of categories">
+    <h2 class="section-title">📰 {{ getCategoryName(category.categor) }}</h2>
+
+    <div class="feed-cards">
+      <div class="feed-card" *ngFor="let post of category.posts" (click)="openNews(post)">
+        <div class="animated-bg"></div>
+        <img [src]="post.writerId ? (environment.apiBaseUrl2 + '/assets/images/' + post.imageUrl) : post.imageUrl" alt="{{ post.title }}" class="feed-img" />
+        <div class="feed-content">
+          <div class="source-info">
+            <!-- <img [src]="post.logoUrl" class="source-logo" /> -->
+            <span class="source-name"><span class="Publishercolor">Publisher:</span>  {{ post.sourceName }}</span>
+          </div>
+          <h3>{{ post.title }}</h3>
+          <p class="time">🕓 {{ post.publishedAt | date:'medium' }}</p>
+          <p class="description">{{ post.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<ng-template #loadingTpl>
+  <div class="loading">
+    <div class="spinner"></div>
+    <p>Loading latest news...</p>
+  </div>
+</ng-template>

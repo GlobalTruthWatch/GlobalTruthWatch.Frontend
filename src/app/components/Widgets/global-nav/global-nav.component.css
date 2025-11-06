@@ -1,0 +1,115 @@
+:root {
+  --primary-bg: #0b2447;
+  --golden-text: #d4af37;
+  --hover-bg: #003b8e;
+  --active-bg: #001f4d;
+  --transition-speed: 0.3s;
+}
+
+/* الشريط العلوي */
+.top-nav {
+  background-color: #0b2447 !important;
+  box-shadow: 0 3px 12px rgba(0, 43, 102, 0.8);
+  padding: 0.4rem 0;
+  z-index: 1030;
+}
+
+/* الشريط السفلي */
+.bottom-nav {
+  background-color: #0b2447 !important;
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 0.35rem 0;
+  margin-top: 56px;
+  z-index: 1029;
+  position: sticky;
+  top: 56px;
+}
+
+/* روابط */
+.nav-link {
+  color: #d4af37 ;
+  font-weight: 500;
+  padding: 0.45rem 1rem !important;
+  border-radius: 8px;
+  transition: all var(--transition-speed);
+}
+.navbar-brand{
+  color: #d4af37;
+}
+/* Hover و Active */
+.nav-link:hover,
+.nav-link.active-hover,
+.nav-link.active {
+  background-color: var(--golden-text) !important;
+  color: wheat !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);
+}
+
+/* أيقونة البروفايل */
+.profile-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.profile-img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--golden-text);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-link:hover .profile-img {
+  transform: scale(1.1);
+  box-shadow: 0 0 6px var(--golden-text);
+}
+
+/* الموبايل */
+.offcanvas {
+  background-color: #03138a;
+  border-left: 3px solid var(--golden-text);
+  transition: transform 0.3s ease-in-out;
+}
+
+.offcanvas-header {
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.offcanvas .nav-link:hover {
+  background-color: var(--golden-text) !important;
+  color: var(--primary-bg) !important;
+  padding-left: 1.5rem !important;
+}
+
+/* زر الموبايل */
+.navbar-toggler {
+  border-color: var(--golden-text) !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23d4af37' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* تباعد أسفل النافبار */
+body {
+  padding-top: 110px !important;
+}
+
+/* استجابة للموبايل */
+@media (max-width: 991px) {
+  .bottom-nav {
+    display: none;
+  }
+
+  .nav-item {
+    color: var(--golden-text);
+  }
+
+  body {
+    padding-top: 70px !important;
+  }
+}

@@ -1,0 +1,119 @@
+/* Container */
+.publish-create-form {
+  
+  max-width: 700px;
+  margin: 40px auto;
+  margin-top: 50px;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333333;
+}
+
+/* Heading */
+.publish-create-form h2 {
+  margin-top: 50px;
+  text-align: center;
+  color: #1a73e8;
+  margin-bottom: 25px;
+  font-size: 28px;
+}
+
+/* Alerts */
+.alert {
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.alert-success {
+  background-color: #e6f4ea;
+  color: #1e4620;
+  border: 1px solid #a6d8a8;
+}
+
+.alert-danger {
+  background-color: #fdecea;
+  color: #611a15;
+  border: 1px solid #f5c2c0;
+}
+
+/* Form Fields */
+.publish-create-form form div {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.publish-create-form label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #555555;
+}
+
+.publish-create-form input[type="text"],
+.publish-create-form select,
+.publish-create-form input[type="file"],
+.publish-create-form textarea {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.publish-create-form input:focus,
+.publish-create-form select:focus,
+.publish-create-form textarea:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 6px rgba(26, 115, 232, 0.3);
+  outline: none;
+}
+
+/* Textarea */
+.publish-create-form textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Buttons */
+.publish-create-form button {
+  background-color: #1a73e8;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+.publish-create-form button:hover {
+  background-color: #155ab6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.publish-create-form button:disabled {
+  background-color: #9bbcf9;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .publish-create-form {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .publish-create-form h2 {
+    font-size: 24px;
+  }
+}

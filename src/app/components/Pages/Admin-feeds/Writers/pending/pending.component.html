@@ -1,0 +1,44 @@
+<a class="btn btn-success m-4" routerLink="/admin/AllRequest">All Requests</a>
+<a class="btn btn-success m-4" routerLink="/admin/getAllWriterslist">All Writers</a>
+
+<div class="container mt-4">
+  <h2 class="text-center mb-4 text-primary fw-bold">Pending Applications</h2>
+
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-2">Loading writer requests...</p>
+  </div>
+
+  <div *ngIf="!loading && writerRequests.length === 0" class="text-center text-muted">
+    <p>No writer applications found.</p>
+  </div>
+
+  <div *ngIf="message" class="alert alert-info text-center my-3">{{ message }}</div>
+
+  <!-- Grid for larger screens -->
+  <div class="row g-4 justify-content-center">
+    <div *ngFor="let req of writerRequests" class="col-12 col-md-6 col-lg-4">
+      <div class="card shadow-sm border-0 p-3 rounded-4 h-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title text-primary mb-3">{{ req.user.name }}</h5>
+
+          <div class="mb-2"><strong>ID:</strong> {{ req.id }}</div>
+          <div class="mb-2"><strong>Application Date:</strong> {{ req.applicationDate | date:'medium' }}</div>
+
+          <div class="mb-3">
+            <label class="form-label"><strong>Select Type:</strong></label>
+            <select class="form-select" [(ngModel)]="req.selectedType">
+              <option [ngValue]="writerTypeEnum.Blogger">Blogger</option>
+              <option [ngValue]="writerTypeEnum.Journalist">Journalist</option>
+            </select>
+          </div>
+
+          <div class="mt-auto d-flex justify-content-between flex-wrap gap-2">
+            <button class="btn btn-success btn-sm px-3" (click)="acceptRequest(req)">✅ Accept</button>
+            <button class="btn btn-danger btn-sm px-3" (click)="rejectRequest(req)">❌ Reject</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
