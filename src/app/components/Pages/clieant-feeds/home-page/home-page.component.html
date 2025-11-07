@@ -32,7 +32,7 @@
 
     <!-- Quick Takes عمودي -->
     <div class="quick-takes-section">
-      <h3 class="section-title-small">Quick Takes ({{ quickTakes.length }})</h3>
+      <!-- <h3 class="section-title-small">Quick Takes ({{ quickTakes.length }})</h3> -->
       <div class="quick-take-list">
         <div class="take-item" *ngFor="let take of quickTakes" (click)="openNews(take)">
           <div class="take-tag">{{ getCategoryName(take.category!) }}</div>
