@@ -20,7 +20,7 @@
           </div>
           <h3>{{ feed.Title || feed.title || 'No Title' }}</h3>
           <p class="time">
-            🕓
+            
             {{
               feed.PublishedAt || feed.publishedAt || feed.pubDate
                 ? (feed.PublishedAt || feed.publishedAt || feed.pubDate | date : 'medium')
@@ -30,7 +30,7 @@
           <p class="description">
             {{ feed.Summary || feed.summary || 'No Summary available.' }}
           </p>
-          <button class="details-btn">📖 View Details</button>
+          <button class="details-btn"> View Details</button>
         </div>
       </div>
     </ng-container>

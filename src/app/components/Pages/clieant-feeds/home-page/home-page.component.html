@@ -1,6 +1,6 @@
 <!-- ✅ شريط الأخبار المتحرك -->
 <div class="news-ticker" *ngIf="latestHeadlines.length > 0">
-  <div class="ticker-label">📰 Latest News:</div>
+  <div class="ticker-label"> Latest News:</div>
   <div class="ticker-content">
     <div class="ticker-text">
       {{ currentTicker }}
@@ -54,7 +54,7 @@
           <div class="feed-content">
             <div class="source-info">
               <span class="source-name"><span class="Publisher">Publisher: </span> {{ post.sourceName }}</span>
-              <p class="time">| {{ post.publishedAt | date:'shortDate' }}</p>
+              <p class="time"><span class="Publisher">Date: </span> {{ post.publishedAt | date:'shortDate' }}</p>
             </div>
             <h3>{{ post.title }}</h3>
             <p class="description">{{ post.description | slice:0:100 }}...</p>

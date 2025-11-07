@@ -1,6 +1,6 @@
 <div class="user-page container-fluid py-4">
   <div class="container">
-    <h2 class="text-center mb-4 fw-bold text-primary">📋 Users List</h2>
+    <h2 class="text-center mb-4 fw-bold text-primary"> Users List</h2>
 
     <div *ngIf="isLoading" class="text-center py-3">
       <div class="spinner-border text-primary" role="status">
@@ -12,7 +12,7 @@
       {{ errorMessage }}
     </div>
 
-    <!-- 💻 Table View (Desktop / Tablet) -->
+    <!--  Table View (Desktop / Tablet) -->
     <div class="table-responsive shadow-sm rounded-3">
       <table *ngIf="!isLoading && users.length > 0" class="table table-hover align-middle mb-0">
         <thead class="table-primary text-center">
@@ -30,7 +30,7 @@
             <td class="text-break">{{ user.email }}</td>
             <td>
               <button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)">
-                🗑 Delete
+                 Delete
               </button>
             </td>
           </tr>
@@ -38,7 +38,7 @@
       </table>
     </div>
 
-    <!-- 📱 Card View (Mobile) -->
+    <!--  Card View (Mobile) -->
     <div *ngFor="let user of users" class="mobile-card">
       <div class="info">
         <strong>ID:</strong> {{ user.id }} <br>
@@ -47,7 +47,7 @@
         <div class="email">{{ user.email }}</div>
       </div>
       <div class="actions">
-        <button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)">🗑 Delete</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)"> Delete</button>
       </div>
     </div>
 
