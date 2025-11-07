@@ -30,6 +30,7 @@ import { AmericasComponent } from './components/Pages/clieant-feeds/americas/ame
 import { MiddleEastComponent } from './components/Pages/clieant-feeds/middleeast/middleeast.component';
 import { EuropeComponent } from './components/Pages/clieant-feeds/europe/europe.component';
 import { OceaniaComponent } from './components/Pages/clieant-feeds/oceania/oceania.component';
+import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
 
 export const routes: Routes = [
   {
@@ -54,7 +55,8 @@ export const routes: Routes = [
 
       { path: 'Login', component: LoginComponent },
       { path: 'SignUp', component: SignupComponent },
-
+      { path: 'reset-password', component: ResetPasswordComponent },
+     
 
       { path: '', redirectTo: '/home', pathMatch: 'full' },
     ]
