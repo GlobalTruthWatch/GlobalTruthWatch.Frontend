@@ -67,30 +67,29 @@
   outline: none;
 }
 
+.password-group i {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d4af37;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+
+.password-group i:hover {
+  color: #fff;
+}
+
 .error small {
   color: #f87171;
   font-size: 0.8rem;
 }
 
-.remember-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-  color: #c9c9c9;
-}
-
-.remember-group input[type="checkbox"] {
-  accent-color: var(--golden-text);
-  width: 16px;
-  height: 16px;
-}
-
 .btn-login {
   background: var(--btn-gradient);
   color: #fff;
-  /* border: none; */
   border-radius: 12px;
   padding: 0.9rem;
   width: 100%;
@@ -99,7 +98,6 @@
   cursor: pointer;
   transition: all 0.3s ease;
   border: 2px solid #d4af37;
-
 }
 
 .btn-login:hover {
@@ -141,6 +139,12 @@
 }
 
 @keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(40px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

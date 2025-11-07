@@ -1,7 +1,7 @@
 :root {
-  --primary-bg: #002b66;
+  --primary-bg: #001f3f;
   --secondary-bg: #0b2447;
-  --golden-text: #d4af37;
+  --golden-text: #f5d76e;
   --hover-bg: #003b8e;
   --btn-gradient: linear-gradient(90deg, #6366f1, #7c3aed);
   --transition-speed: 0.3s;
@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #001f3f, #002b66);
+  background:#001f3f;
   font-family: "Poppins", sans-serif;
   padding: 20px;
   color: #f5d76e;
@@ -29,7 +29,6 @@
   color: var(--golden-text);
   animation: fadeInUp 0.8s ease forwards;
   position: relative;
-  overflow: hidden;
 }
 
 .login-title {
@@ -50,6 +49,18 @@
   position: relative;
 }
 
+/* make sure input has space on the right for the icon button */
+.password-group input {
+  width: 100%;
+  padding: 0.9rem 3.4rem 0.9rem 1rem; /* big right padding for icon */
+  border-radius: 12px;
+  border: 1px solid #4c5a87;
+  background: #0b2447;
+  color: #f5d76e;
+  font-size: 1rem;
+  transition: all var(--transition-speed) ease;
+}
+
 .input-group input {
   width: 100%;
   padding: 0.9rem 1rem;
@@ -63,8 +74,43 @@
 
 .input-group input:focus {
   border-color: var(--golden-text);
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
   outline: none;
+}
+
+/* the icon button positioned inside the input on the right */
+.password-group .icon-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  padding: 6px;
+  height: 36px;
+  width: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+  color: #c9c9c9;
+}
+
+/* hover/focus state to give clear affordance */
+.password-group .icon-btn:hover,
+.password-group .icon-btn:focus {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--golden-text);
+  outline: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+/* ensure the general input-group styling remains consistent */
+.input-group input::-ms-reveal,
+.input-group input::-ms-clear {
+  display: none; /* hide IE/Edge clear/reveal buttons to avoid overlap */
 }
 
 .error small {
@@ -121,7 +167,7 @@
 
 .footer-btn {
   background-color: var(--golden-text);
-  color: #f5d76e;
+  color:#ffffff;
   border: none;
   padding: 0.7rem 1.8rem;
   border-radius: 12px;
@@ -132,8 +178,7 @@
 }
 
 .footer-btn:hover {
-  background-color: #655a32;
-  color: #f5d76e;
+  background-color: #e6c157;
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
 }

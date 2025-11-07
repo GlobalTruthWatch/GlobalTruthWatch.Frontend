@@ -9,7 +9,7 @@ import { AuthService } from '../../../Services/auth.service';
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule , RouterLink],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
@@ -17,6 +17,7 @@ export class SignupComponent {
   signupForm: FormGroup;
   serverError: string | null = null;
   loading = false;
+  showPassword = false; // ✅ للتحكم في إظهار أو إخفاء الباسورد
 
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
     this.signupForm = this.fb.group({
@@ -25,6 +26,10 @@ export class SignupComponent {
       password: ['', [Validators.required, Validators.minLength(6)]],
       rememberMe: [false]
     });
+  }
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
   }
 
   onSubmit() {

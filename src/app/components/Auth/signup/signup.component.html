@@ -1,6 +1,6 @@
 <div class="login-container">
   <div class="login-card fade-in">
-    <h2 class="login-title">Create Account </h2>
+    <h2 class="login-title">Create Account</h2>
     <p class="login-subtitle">Join us and explore the future</p>
 
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
@@ -22,19 +22,23 @@
       </div>
 
       <!-- Password -->
-      <div class="input-group">
-        <input type="password" placeholder="Password" formControlName="password" />
+      <div class="input-group password-group">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <i
+          class="fa"
+          [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+          (click)="togglePassword()"
+        ></i>
+
         <div class="error" *ngIf="password?.touched && password?.invalid">
           <small *ngIf="password?.errors?.['required']">Password is required.</small>
           <small *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters.</small>
         </div>
       </div>
-
-      <!-- Remember Me
-      <div class="remember-group">
-        <input type="checkbox" id="remember" formControlName="rememberMe" />
-        <label for="remember">Remember me</label>
-      </div> -->
 
       <!-- Submit Button -->
       <button type="submit" class="btn-login" [disabled]="loading">
@@ -50,8 +54,7 @@
 
     <!-- Footer Buttons -->
     <div class="login-footer-buttons">
-     <a class="footer-btn"  routerLink="/Login">Already have an account? Login</a>
-
+      <a class="footer-btn" routerLink="/Login">Already have an account? Login</a>
     </div>
   </div>
 </div>

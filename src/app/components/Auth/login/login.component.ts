@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { catchError, of } from 'rxjs';
 import { AuthService } from '../../../Services/auth.service';
 
-declare const google: any; // Google Identity Services SDK
+declare const google: any;
 
 @Component({
   selector: 'app-login',
@@ -18,6 +18,7 @@ export class LoginComponent implements AfterViewInit {
   loginForm: FormGroup;
   serverError: string | null = null;
   loading = false;
+  showPassword = false;
 
   constructor(
     private fb: FormBuilder,
@@ -36,25 +37,30 @@ export class LoginComponent implements AfterViewInit {
   }
 
   private initGoogleSignIn(): void {
-    google.accounts.id.initialize({
-      client_id: '498969207883-os0gf7vs10g5rcekdlo6rtd316ubatqc.apps.googleusercontent.com', // Replace with your Client ID
-      callback: (response: any) => this.handleGoogleResponse(response)
-    });
-
-    const googleBtn = document.getElementById('googleSignInBtn');
-    if (googleBtn) {
-      google.accounts.id.renderButton(googleBtn, {
-        theme: 'outline',
-        size: 'large',
-        width: '100%'
+    try {
+      google.accounts.id.initialize({
+        client_id: '498969207883-os0gf7vs10g5rcekdlo6rtd316ubatqc.apps.googleusercontent.com',
+        callback: (response: any) => this.handleGoogleResponse(response)
       });
-    }
 
-    google.accounts.id.prompt(); // Show One Tap if available
+      const googleBtn = document.getElementById('googleSignInBtn');
+      if (googleBtn) {
+        google.accounts.id.renderButton(googleBtn, {
+          theme: 'outline',
+          size: 'large',
+          width: '100%'
+        });
+      }
+
+      google.accounts.id.prompt();
+    } catch (e) {
+      // If google SDK not loaded, ignore gracefully
+      console.warn('Google Identity SDK not available yet.', e);
+    }
   }
 
-  triggerGoogleSignIn(): void {
-    google.accounts.id.prompt(); // Show Google One Tap manually
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 
   private handleGoogleResponse(response: any): void {
