@@ -27,7 +27,8 @@ export class AuthService {
   }
 
   loginWithGoogle(idToken: string): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.base}/oauth/google`, { idToken })
+    // return this.http.post<AuthResponse>(`${this.base}/oauth/google`, { idToken })
+    return this.http.post<AuthResponse>(`http://localhost:5016/api/oauth/google`, { idToken })
       .pipe(tap(res => this.handleAuthSuccess(res, true)));
   }
 

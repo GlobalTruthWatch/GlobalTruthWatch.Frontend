@@ -32,8 +32,8 @@ export class ForgotPasswordComponent {
     this.successMsg = '';
     this.errorMsg = '';
 
-    // this.http.post(`${environment.apiBaseUrl}/auth/forgot-password`, this.forgotForm.value)
-    this.http.post(`http://localhost:5016/api/auth/forgot-password`, this.forgotForm.value)
+    this.http.post(`${environment.apiBaseUrl}/auth/forgot-password`, this.forgotForm.value)
+    // this.http.post(`http://localhost:5016/api/auth/forgot-password`, this.forgotForm.value)
       .subscribe({
         next: (res: any) => {
           this.successMsg = res.message || 'Reset link sent successfully!';
