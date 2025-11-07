@@ -1,41 +1,75 @@
-# Redirect everything to your Angular app in /dist/global-truth-watch/browser
+# -----------------------------------------------
+# Angular SPA configuration for Hostinger (Apache)
+# -----------------------------------------------
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Ensure the base directory is the current folder
   RewriteBase /
 
-  # If someone visits the domain root, serve Angular's index.html
-  DirectoryIndex /dist/global-truth-watch/browser/index.html
-
-  # If request is for an existing file or folder, serve it directly
+  # Serve existing files and directories as they are
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # Otherwise, rewrite all requests to Angular's index.html
-  RewriteRule ^ dist/global-truth-watch/browser/index.html [L]
+  # Redirect all other routes to index.html
+  RewriteRule ^ index.html [L]
 </IfModule>
 
-# Optional: cache static assets for performance
-<IfModule mod_expires.c>
-  ExpiresActive On
-  ExpiresByType text/html "access plus 1 hour"
-  ExpiresByType image/jpg "access plus 1 month"
-  ExpiresByType image/jpeg "access plus 1 month"
-  ExpiresByType image/gif "access plus 1 month"
-  ExpiresByType image/png "access plus 1 month"
-  ExpiresByType text/css "access plus 1 month"
-  ExpiresByType application/javascript "access plus 1 month"
-  ExpiresByType font/woff2 "access plus 1 year"
-</IfModule>
-
-# Optional: enable gzip compression
+# -----------------------------------------------
+# Enable Gzip compression for faster delivery
+# -----------------------------------------------
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/plain
   AddOutputFilterByType DEFLATE text/html
   AddOutputFilterByType DEFLATE text/xml
   AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
   AddOutputFilterByType DEFLATE application/javascript
-  AddOutputFilterByType DEFLATE application/json
-  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE application/x-javascript
 </IfModule>
+
+# -----------------------------------------------
+# Browser caching for static assets
+# -----------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Default expiry: 1 month
+  ExpiresDefault "access plus 1 month"
+
+  # HTML should always be fresh
+  ExpiresByType text/html "access plus 0 seconds"
+
+  # CSS and JS cache for 1 year (Angular builds are versioned)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType application/x-javascript "access plus 1 year"
+
+  # Images cache for 1 year
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+</IfModule>
+
+# -----------------------------------------------
+# Security headers (optional but recommended)
+# -----------------------------------------------
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=()"
+</IfModule>
+
+# -----------------------------------------------
+# Disable directory listing
+# -----------------------------------------------
+Options -Indexes
