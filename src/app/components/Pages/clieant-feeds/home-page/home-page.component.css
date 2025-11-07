@@ -1,209 +1,279 @@
-/* ===== HERO SECTION ===== */
-.hero {
-  position: relative;
-  height: 100vh;
-  background: linear-gradient(135deg, #001f3f 0%, #002b66 100%);
-  overflow: hidden;
+/* =============================== */
+/* === 1. شريط الأخبار المتحرك === */
+/* =============================== */
+.news-ticker {
+  background-color: #111;
+  color: #ffd700;
   display: flex;
   align-items: center;
-  justify-content: center;
+  overflow: hidden;
+  white-space: nowrap;
+  height: 45px;
+  padding: 0 10px;
+  border-bottom: 2px solid #ffaa00;
+}
+
+.ticker-label {
+  background-color: #ffaa00;
+  color: #111;
+  padding: 6px 12px;
+  margin-right: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.ticker-content {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: tickerMove 45s ease-in-out infinite;
+}
+
+@keyframes tickerMove {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* =============================== */
+/* === 2. تنسيق عام === */
+/* =============================== */
+.home-container {
+  background-color: #0d0d0d;
+  color: #f0f0f0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-bottom: 40px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #222;
+  margin: 40px 0;
+}
+
+/* =============================== */
+/* === 3. التخطيط الرئيسي === */
+/* =============================== */
+.main-grid-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  padding: 40px 5%;
+}
+
+.main-headline-card {
+  position: relative;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.5s ease;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+}
+
+.main-headline-card:hover {
+  transform: translateY(-5px);
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(13,13,13,0.3));
+}
+
+.content-wrapper {
+  position: absolute;
+  bottom: 0;
+  padding: 25px;
+  z-index: 2;
+}
+
+.tag {
+  background-color: #ffaa00;
+  color: #111;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.headline-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffd700;
+  margin: 10px 0;
+}
+
+.headline-summary {
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.deep-analysis-btn {
+  color: #ffd700;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.deep-analysis-btn:hover {
+  color: #fff;
+}
+
+/* =============================== */
+/* === 4. Quick Takes عمودي === */
+/* =============================== */
+.quick-takes-section {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 20px;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+}
+
+.quick-take-list {
+  display: flex;
+  flex-direction: column;
+  animation: scrollVertical 60s linear infinite;
+}
+
+.take-item {
+  flex: 0 0 auto;
+  padding: 12px 0;
+  border-bottom: 1px solid #333;
+  cursor: pointer;
+}
+
+.take-item:hover {
+  background-color: #222;
+  border-radius: 6px;
+}
+
+.take-title {
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.take-time {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+@keyframes scrollVertical {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+/* =============================== */
+/* === 5. أقسام التغذية === */
+/* =============================== */
+.category-grid {
   padding: 0 5%;
 }
 
-.hero-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 2;
-  width: 100%;
-  max-width: 1300px;
-  position: relative;
-}
-
-.text-side {
-  color: #fff;
-  flex: 1;
-  text-align: left;
-  animation: fadeInLeft 1.5s ease;
-}
-
-.hero-title {
-  font-size: 3.3rem;
-  font-weight: bold;
+.section-title-main {
+  font-size: 1.8rem;
   color: #ffd700;
-  margin-bottom: 20px;
-  /* text-shadow: 0 0 25px rgba(255, 215, 0, 0.7); */
-}
-
-.hero-subtitle {
-  font-size: 1.4rem;
-  color: #cce7ff;
-  margin-bottom: 30px;
-}
-.Publishercolor{
-  color: #fff;
-}
-.explore-btn {
-  padding: 15px 35px;
-  background: linear-gradient(45deg, #ffd700, #ffae00);
-  border: none;
-  border-radius: 50px;
-  color: #002244;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  /* box-shadow: 0 0 25px rgba(255, 215, 0, 0.6); */
-  transition: all 0.3s ease-in-out;
-}
-.explore-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 45px rgba(255, 215, 0, 0.9);
-}
-
-.image-side {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: fadeInRight 1.5s ease;
-}
-
-.logo {
-  width: 400px;
-  animation: float 5s ease-in-out infinite;
-  filter: drop-shadow(0 0 25px rgba(50, 50, 50, 0.5));
-}
-
-.gradient-waves {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 50% 100%, rgba(255, 215, 0, 0.15) 0%, transparent 80%),
-              linear-gradient(180deg, rgba(0, 0, 60, 0.7) 0%, rgba(0, 0, 40, 1) 100%);
-  animation: waveMove 10s infinite ease-in-out alternate;
-  z-index: 1;
-}
-
-.floating-particles {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image:
-    radial-gradient(rgba(255, 215, 0, 0.15) 1px, transparent 1px),
-    radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 80px 80px;
-  animation: particlesMove 12s linear infinite;
-  z-index: 0;
-  opacity: 0.7;
-}
-
-/* ===== FEEDS SECTION ===== */
-.feed-section {
-  padding: 80px 20px;
-  background: linear-gradient(to bottom, #001833, #000b1a);
-  text-align: center;
-}
-
-.section-title {
-  font-size: 2rem;
-  color: #ffd700;
-  margin-bottom: 40px;
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+  margin-bottom: 25px;
+  border-left: 5px solid #ffaa00;
+  padding-left: 10px;
 }
 
 .feed-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-  gap: 30px;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
 }
 
-/* ===== FEED CARD ===== */
 .feed-card {
-  position: relative;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 25px;
+  background-color: #1a1a1a;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 0 35px rgba(255, 215, 0, 0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
+  transition: transform 0.4s ease;
 }
 
 .feed-card:hover {
-  transform: translateY(-12px);
-  /* box-shadow: 0 0 50px rgba(255, 215, 0, 0.5); */
-}
-
-.animated-bg {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
-  animation: pulse 6s infinite alternate;
-  z-index: 0;
+  transform: translateY(-5px);
 }
 
 .feed-img {
   width: 100%;
-  height: 250px;
+  height: 180px;
   object-fit: cover;
-  z-index: 1;
 }
 
 .feed-content {
-  padding: 25px;
-  position: relative;
-  z-index: 2;
+  padding: 15px;
 }
 
-.source-info {
+/* =============================== */
+/* === 6. تحميل === */
+/* =============================== */
+.loading {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
-}
-
-.source-logo {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  margin-right: 10px;
-  object-fit: cover;
-  border: 1px solid #ffd700;
-}
-
-.source-name {
+  height: 100vh;
   color: #ffd700;
-  font-weight: 600;
 }
 
-.feed-content h3 {
-  color: #fff;
-  font-size: 1.25rem;
-  margin: 10px 0;
-}
-
-.time {
-  color: #a7c7e7;
-  font-size: 0.9rem;
-}
-
-.description {
-  color: #cce7ff;
-  font-size: 1rem;
-  margin-top: 10px;
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes waveMove { from { transform: translateY(0); } to { transform: translateY(-40px); } }
-@keyframes particlesMove { 0% { background-position: 0 0, 0 0; } 100% { background-position: 80px 80px, -80px -80px; } }
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-@keyframes fadeInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
-@keyframes fadeInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
-@keyframes pulse { 0% { opacity: 0.3; transform: scale(1); } 100% { opacity: 0.7; transform: scale(1.2); } }
-
-/* ===== RESPONSIVE ===== */
+/* =============================== */
+/* === 7. Responsive Design === */
+/* =============================== */
 @media (max-width: 992px) {
-  .hero-content { flex-direction: column-reverse; text-align: center; }
-  .text-side { text-align: center; margin-top: 20px; }
-  .logo { width: 300px; }
-  .hero-title { font-size: 2.5rem; }
+  .main-grid-layout {
+    grid-template-columns: 1fr;
+    padding: 20px 3%;
+  }
+
+  .main-headline-card {
+    height: 400px;
+  }
+
+  .headline-title {
+    font-size: 1.6rem;
+  }
+
+  .feed-cards {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  }
+
+  .quick-takes-section {
+    height: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  .news-ticker {
+    font-size: 0.8rem;
+    height: 40px;
+  }
+
+  .headline-title {
+    font-size: 1.3rem;
+  }
+
+  .headline-summary {
+    font-size: 0.9rem;
+  }
+
+  .feed-img {
+    height: 150px;
+  }
+
+  .quick-takes-section {
+    height: 300px;
+  }
+}
+.Publisher{
+  color: #ffd700;
 }

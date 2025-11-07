@@ -1,45 +1,68 @@
+<!-- ✅ شريط الأخبار المتحرك -->
+<div class="news-ticker" *ngIf="latestHeadlines.length > 0">
+  <div class="ticker-label">📰 Latest News:</div>
+  <div class="ticker-content">
+    <div class="ticker-text">
+      {{ currentTicker }}
+    </div>
+  </div>
+</div>
+
+<!-- ✅ باقي الصفحة -->
 <div class="home-container" *ngIf="!loading; else loadingTpl">
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="text-side">
-        <h1 class="hero-title">Global Truth Watch</h1>
-        <p class="hero-subtitle">
-          Your window to verified, real-time global news.
-        </p>
-        <button class="explore-btn" (click)="scrollToNews()">Explore Latest News ↓</button>
-      </div>
-
-      <div class="image-side">
-        <img src="assets/image1.png" alt="Global Truth Watch Logo" class="logo" />
+  <section class="main-grid-layout">
+    <!-- الخبر الرئيسي -->
+    <div class="main-headline-card" *ngIf="mainHeadline">
+      <div 
+        class="image-overlay" 
+        [style.background-image]="'url(' + (mainHeadline.writerId ? (environment.apiBaseUrl2 + '/assets/images/' + mainHeadline.imageUrl) : mainHeadline.imageUrl) + ')' "
+        (click)="openNews(mainHeadline)"
+      ></div>
+      <div class="content-wrapper">
+        <span class="tag">EXCLUSIVE - {{ getCategoryName(mainHeadline.category!) }}</span>
+        <a [routerLink]="['/feeds', mainHeadline.id]">
+          <h2 class="headline-title">{{ mainHeadline.title }}</h2>
+        </a>
+        <p class="headline-summary">{{ mainHeadline.description | slice:0:200 }}...</p>
+        <div class="headline-meta">
+          <p>🕔 {{ mainHeadline.publishedAt | date:'shortTime' }} | {{ mainHeadline.sourceName }}</p>
+        </div>
       </div>
     </div>
 
-    <div class="floating-particles"></div>
-    <div class="gradient-waves"></div>
-  </section>
-
-  <!-- Feeds Section -->
-  <section class="feed-section" id="news-section" *ngFor="let category of categories">
-    <h2 class="section-title">📰 {{ getCategoryName(category.categor) }}</h2>
-
-    <div class="feed-cards">
-      <div class="feed-card" *ngFor="let post of category.posts" (click)="openNews(post)">
-        <div class="animated-bg"></div>
-        <img [src]="post.writerId ? (environment.apiBaseUrl2 + '/assets/images/' + post.imageUrl) : post.imageUrl" alt="{{ post.title }}" class="feed-img" />
-        <div class="feed-content">
-          <div class="source-info">
-            <!-- <img [src]="post.logoUrl" class="source-logo" /> -->
-            <span class="source-name"><span class="Publishercolor">Publisher:</span>  {{ post.sourceName }}</span>
-          </div>
-          <h3>{{ post.title }}</h3>
-          <p class="time">🕓 {{ post.publishedAt | date:'medium' }}</p>
-          <p class="description">{{ post.description }}</p>
+    <!-- Quick Takes عمودي -->
+    <div class="quick-takes-section">
+      <h3 class="section-title-small">Quick Takes ({{ quickTakes.length }})</h3>
+      <div class="quick-take-list">
+        <div class="take-item" *ngFor="let take of quickTakes" (click)="openNews(take)">
+          <div class="take-tag">{{ getCategoryName(take.category!) }}</div>
+          <p class="take-title">{{ take.title | slice:0:80 }}...</p>
+          <p class="take-time">{{ take.publishedAt | date:'shortTime' }} | {{ take.sourceName }}</p>
         </div>
       </div>
     </div>
   </section>
+
+  <hr class="divider">
+
+  <div class="category-grid">
+    <section class="feed-section" *ngFor="let category of categories">
+      <h2 class="section-title-main">{{ getCategoryName(category.categor) }} Spotlight</h2>
+      <div class="feed-cards">
+        <div class="feed-card" *ngFor="let post of category.posts" (click)="openNews(post)">
+          <img [src]="post.writerId ? (environment.apiBaseUrl2 + '/assets/images/' + post.imageUrl) : post.imageUrl" alt="{{ post.title }}" class="feed-img" />
+          <div class="feed-content">
+            <div class="source-info">
+              <span class="source-name"><span class="Publisher">Publisher: </span> {{ post.sourceName }}</span>
+              <p class="time">| {{ post.publishedAt | date:'shortDate' }}</p>
+            </div>
+            <h3>{{ post.title }}</h3>
+            <p class="description">{{ post.description | slice:0:100 }}...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
 
 <ng-template #loadingTpl>

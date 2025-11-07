@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'http://localhost:5016'
+  apiBaseUrl: 'https://globaltruthwatch.runasp.net/api'
 };
